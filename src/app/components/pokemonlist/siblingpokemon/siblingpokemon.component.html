@@ -5,18 +5,18 @@
         class="card shadow bg-light mx-5 rounded text-center poke-card"
         (click)="sendPokemon(prevPokemon)">
             <img 
-            src="{{ prevPokemon?.sprites.front_default }}" 
-            alt="{{ prevPokemon?.name }} Front Image" class="card-img-top">
-            <h5 class="card-title"> #{{ prevPokemon?.id }} {{ prevPokemon?.name }} </h5>
+            src="{{ prevPokemon.sprites.front_default }}" 
+            alt="{{ prevPokemon.name }} Front Image" class="card-img-top">
+            <h5 class="card-title"> #{{ prevPokemon.id }} {{ prevPokemon.name }} </h5>
         </div>
         <!-- When a previous or next Pokemon card is clicked, the data should be passed to parent pokemonlistComponent in order to update main Pokemon listing -->
         <div *ngIf="nextPokemon" 
         class="card shadow bg-light mx-5 text-center rounded poke-card"
         (click)="sendPokemon(nextPokemon)">
             <img 
-            src="{{ nextPokemon?.sprites.front_default }}" 
-            alt="{{ nextPokemon?.name }} Front Image" class="card-img-top">
-            <h5 class="card-title"> #{{ nextPokemon?.id }} {{ nextPokemon?.name }} </h5>
+            src="{{ nextPokemon.sprites.front_default }}" 
+            alt="{{ nextPokemon.name }} Front Image" class="card-img-top">
+            <h5 class="card-title"> #{{ nextPokemon.id }} {{ nextPokemon.name }} </h5>
         </div>
     </div>
 </div>

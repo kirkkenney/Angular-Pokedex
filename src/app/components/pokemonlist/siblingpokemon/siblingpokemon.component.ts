@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PokemonapiService } from '../../../services/pokemonapi.service';
+import { PokeModel, PokemonSpeciesModel } from '../../../pokemonModel';
 
 @Component({
   selector: 'app-siblingpokemon',
@@ -13,14 +14,14 @@ export class SiblingpokemonComponent implements OnInit {
   // @Input receives data from the parent pokemonlistComponent, getting 
   // currently selected Pokemon details, and fetching the previous and next
   //  Pokemon from the Pokedex entries in the getSiblingPokemon method
-  @Input() pokemonData: Object;
+  @Input() pokemonData: PokeModel;
   // @Output binding sends data back to pokemonlistComponent when a previous
   // or next Pokemon card is clicked, updating the main Pokemon entry (via
   // the sendPokemon method)
-  @Output() sendPokemonToParent = new EventEmitter<Object>();
+  @Output() sendPokemonToParent = new EventEmitter<PokeModel>();
 
-  public prevPokemon: Object;
-  public nextPokemon: Object;
+  public prevPokemon: PokeModel;
+  public nextPokemon: PokeModel;
   currentGameIndex: number;
 
   // pokeApi is an Angular Service class which handles the API HTTP calls
@@ -52,7 +53,7 @@ export class SiblingpokemonComponent implements OnInit {
     }  
   }
 
-  sendPokemon(pokemon: Object) {
+  sendPokemon(pokemon: PokeModel) {
     this.sendPokemonToParent.emit(pokemon);
   }
 

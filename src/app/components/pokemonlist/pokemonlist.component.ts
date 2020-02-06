@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonapiService } from '../../services/pokemonapi.service';
+import { PokeModel, PokemonSpeciesModel } from '../../pokemonModel';
 
 @Component({
   selector: 'app-pokemonlist',
@@ -10,8 +11,8 @@ export class PokemonlistComponent implements OnInit {
 
   // pokemon and pokemonSpecies properties are used to hold the data
   // from API calls
-  public pokemon: Object;
-  public pokemonSpecies: Object;
+  public pokemon: PokeModel;
+  public pokemonSpecies: PokemonSpeciesModel;
 
   // randomPokemon is assigned a random integer on the ngOnInit method,
   // used to generate a random Pokemon listing on page load
@@ -22,7 +23,7 @@ export class PokemonlistComponent implements OnInit {
   pokemonTypes: {} = {'bug': '#A8B820', 'dark': '#705848', 'dragon': '#7038F8', 'electric': '#F8D030', 'fairy': '#EE99AC', 'fighting': '#C03028', 'fire': '#F08030', 'flying': '#A890F0', 'ghost': '#705898', 'grass': '#78C850', 'ground': '#E0C068', 'ice': '#98D8D8', 'normal': '#A8A878', 'poison': '#A040A0', 'psychic': '#F85888', 'rock': '#B8A038', 'steel': '#B8B8D0', 'water': '#6890F0'};
 
   // receivedPokemon = data received from child siblingPokemonComponent
-  receivedPokemon: Object;
+  receivedPokemon: PokeModel;
   error: string = '';
 
   // @Input binding receives data from the HeaderComponent search field
@@ -63,7 +64,7 @@ export class PokemonlistComponent implements OnInit {
 
   // method to receive data from the siblingpokemonComponent when
   // prev or next Pokemon cards are clicked
-  getPokemonFromChild(pokemon: Object) {
+  getPokemonFromChild(pokemon: PokeModel) {
     this.receivedPokemon = pokemon;
     this.pokemon = this.receivedPokemon;
     this.getPokemon(this.pokemon['id']);

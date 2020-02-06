@@ -5,10 +5,10 @@
     (sendPokemonToParent)="getPokemonFromChild($event)"></app-siblingpokemon>
     <div *ngIf="pokemon" class="text-center my-5">
         <div class="text-center poke-image">
-            <h2 class="my-3">#{{ pokemon?.id }} {{ pokemon?.name | uppercase }} </h2>
-            <img src="{{ pokemon?.sprites.front_default }}" alt="{{ pokemon?.name }} Front Image">
+            <h2 class="my-3">#{{ pokemon.id }} {{ pokemon?.name | uppercase }} </h2>
+            <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }} Front Image">
             <div class="my-4">
-                <span *ngFor="let prop of pokemon?.types | keyvalue">
+                <span *ngFor="let prop of pokemon.types | keyvalue">
                     <span *ngFor="let item of prop.value | keyvalue">
                         <!-- [ngStyle] directive applies styling of the Pokemon type elements dynamically by fetching the corresponding hex values for current Pokemon -->
                         <span *ngFor="let subitem of item.value | keyvalue">
@@ -24,8 +24,8 @@
                 </span>
             </div>
             <div>
-                <h4>Height: {{ (pokemon?.height)/10 }} m</h4>
-                <h4>Weight: {{ (pokemon?.weight)/10 }} kg</h4>
+                <h4>Height: {{ (pokemon.height)/10 }} m</h4>
+                <h4>Weight: {{ (pokemon.weight)/10 }} kg</h4>
             </div>
             <!-- getspecieslang is a custom-built Angular Pipe that cleanses the data to only return the Pokemon description in the English language (the API provides a number of language options) -->
             <div *ngIf="pokemonSpecies">

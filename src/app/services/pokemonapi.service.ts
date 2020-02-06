@@ -19,10 +19,10 @@ export class PokemonapiService {
 
   constructor(private http: HttpClient) { }
 
-  getPokemon(pokemon): Observable<PokeModel[]> {
-    return this.http.get<PokeModel[]>(`${this.pokemonBaseUrl}${pokemon}`);
+  getPokemon(pokemon): Observable<PokeModel> {
+    return this.http.get<PokeModel>(`${this.pokemonBaseUrl}${pokemon}`);
   }
-  getPokemonSpecies(pokemon): Observable<PokemonSpeciesModel[]> {
-    return this.http.get<PokemonSpeciesModel[]>(`${this.pokemonSpeciesBaseUrl}${pokemon}`)
+  getPokemonSpecies(pokemon): Observable<PokemonSpeciesModel> {
+    return this.http.get<PokemonSpeciesModel>(`${this.pokemonSpeciesBaseUrl}${pokemon}`)
   }
 }
