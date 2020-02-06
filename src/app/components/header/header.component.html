@@ -1,0 +1,22 @@
+<div id="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container-fluid">
+            <div class="navbar-nav">
+                <a class="navbar-brand">Angular PokeDex</a>
+            </div>
+        </div>
+        <div class="input-group">
+            <!-- local template variable "#searchValue" is used for each access to input value -->
+            <input type="text" class="form-control" 
+            placeholder="Search For A Pokemon" 
+            aria-label="Search For A Pokemon"
+            #searchValue>
+            <div class="input-group-append">
+                <!-- When search button is clicked, value from search field is passed to the searchPokemon method inside the component class -->
+                <button class="btn btn-light border border-secondary" type="button" (click)="searchPokemon(searchValue.value)">
+                    Search
+                </button>
+            </div>
+        </div>
+    </nav>
+</div>

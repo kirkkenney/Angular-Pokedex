@@ -1,0 +1,15 @@
+#pokemonList {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10%;
+    /* border: solid black 1px; */
+}
+
+.poke-image {
+    width: 100%;
+    height: auto;
+}
+.poke-image img {
+    width: 20%;
+    height: auto;
+}

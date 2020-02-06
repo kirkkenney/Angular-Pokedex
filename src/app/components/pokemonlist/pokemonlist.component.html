@@ -1,0 +1,39 @@
+<div id="pokemonList" class="my-5">
+    <!-- [pokemonData] is used to bind current Pokemon data to the child component, allowing for updating the prevPokemon and nextPokemon card details. (sendPokemonToParent) binds the sendPokemonToParent method within the child component, to the getPokemonFromChild method inside of parent component -->
+    <app-siblingpokemon class="my-4" *ngIf="pokemon" 
+    [pokemonData]="pokemon"
+    (sendPokemonToParent)="getPokemonFromChild($event)"></app-siblingpokemon>
+    <div *ngIf="pokemon" class="text-center my-5">
+        <div class="text-center poke-image">
+            <h2 class="my-3">#{{ pokemon.id }} {{ pokemon.name | uppercase }} </h2>
+            <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }} Front Image">
+            <div class="my-4">
+                <span *ngFor="let prop of pokemon.types | keyvalue">
+                    <span *ngFor="let item of prop.value | keyvalue">
+                        <!-- [ngStyle] directive applies styling of the Pokemon type elements dynamically by fetching the corresponding hex values for current Pokemon -->
+                        <span *ngFor="let subitem of item.value | keyvalue">
+                            <span *ngIf="subitem.key === 'name'"
+                            class="mx-2 py-2 px-4 border-0 rounded"
+                            [ngStyle]="{
+                                backgroundColor: getPokemonTypeColor(subitem.value)
+                            }">
+                            {{ subitem.value | uppercase }}
+                            </span>
+                        </span>
+                    </span>
+                </span>
+            </div>
+            <div>
+                <h4>Height: {{ (pokemon.height)/10 }} m</h4>
+                <h4>Weight: {{ (pokemon.weight)/10 }} kg</h4>
+            </div>
+            <!-- getspecieslang is a custom-built Angular Pipe that cleanses the data to only return the Pokemon description in the English language (the API provides a number of language options) -->
+            <div *ngIf="pokemonSpecies">
+                {{ pokemonSpecies | getspecieslang }}
+            </div>
+        </div>
+    </div>
+    <div *ngIf="error" class="errorMsg">
+        {{ error }}
+    </div>
+</div>

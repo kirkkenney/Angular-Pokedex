@@ -1,0 +1,14 @@
+.poke-card {
+    width: 15%;
+}
+
+.poke-card h5 {
+    text-transform: capitalize;
+}
+
+.poke-card:hover {
+    transform: scale(1.05);
+    border: solid 1px #6890F0;
+    cursor: pointer;
+    transition: ease-in-out 0.5s;
+}
